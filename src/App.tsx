@@ -3,10 +3,12 @@ import { useOrder } from "./hooks/useOrder"
 
 import MenuItem from "./components/MenuItem"
 import OrderContent from "./components/OrderContent"
+import OrderTotal from "./components/OrderTotal"
+import TipPercentageForm from "./components/TipPercentageForm"
 
 function App() {
 
-	const { order, addItem, removeItem } = useOrder()
+	const { tip, setTip, order, addItem, removeItem, saveOrder } = useOrder()
 
 	return (
 		<>
@@ -28,10 +30,25 @@ function App() {
 					</div>
 				</div>
 				<div className="flex flex-col p-5 gap-3">
-					<OrderContent 
-						order={order}
-						removeItem={removeItem}
-					/>
+				<div className="border-2 border-neutral-300 p-5 rounded-sm flex flex-col gap-7">
+					{order.length > 0 ? (
+						<>
+							<OrderContent 
+								order={order}
+								removeItem={removeItem}
+							/>
+							<TipPercentageForm 
+								setTip={setTip}
+								tip={tip}
+							/>
+							<OrderTotal 
+								order={order}
+								tip={tip}
+								saveOrder={saveOrder}
+							/>
+						</>
+					) : <p>No hay ninguna orden</p>}
+					</div>
 					
 				</div>
 			</main>

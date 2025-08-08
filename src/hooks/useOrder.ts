@@ -5,6 +5,7 @@ import type { MenuItem, OrderItem } from "../types"
 export const useOrder = () => {
     
     const [order, setOrder] = useState<OrderItem[]>([])
+    const [tip, setTip] = useState(0)
 
     const addItem = (item: MenuItem) => {
         const itemExist = order.find(orderItem => orderItem.id === item.id)
@@ -24,11 +25,17 @@ export const useOrder = () => {
         setOrder(order.filter(item => item.id !== id))
     }
 
-    console.log(order)
-    
+    const saveOrder = () => {
+        setOrder([])
+        setTip(0)
+    }
+
     return {
         order,
+        tip,
+        setTip,
         addItem,
-        removeItem
+        removeItem,
+        saveOrder
     }
 }
