@@ -18,7 +18,16 @@ export const useOrder = () => {
             const newItem = {...item, quantity: 1}
             setOrder([...order, newItem])
         }
+    }
 
+    const reduceItem = (item: MenuItem) => {
+        const itemExist = order.find(orderItem => orderItem.id === item.id)
+        if (itemExist) {
+            const updatedOrder = order.map( orderItem => orderItem.id === item.id ?
+                { ...orderItem, quantity: orderItem.quantity - 1 } :  orderItem
+            )
+            setOrder(updatedOrder)
+        }
     }
 
     const removeItem = (id: MenuItem['id']) => {
@@ -35,6 +44,7 @@ export const useOrder = () => {
         tip,
         setTip,
         addItem,
+        reduceItem,
         removeItem,
         saveOrder
     }

@@ -7,11 +7,11 @@ import OrderTotal from "./components/OrderTotal"
 import TipPercentageForm from "./components/TipPercentageForm"
 
 import LocalAtmRoundedIcon from '@mui/icons-material/LocalAtmRounded'
-import RestaurantMenuRoundedIcon from '@mui/icons-material/RestaurantMenuRounded'
+import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded'
 
 function App() {
 
-	const { tip, setTip, order, addItem, removeItem, saveOrder } = useOrder()
+	const { tip, setTip, order, addItem, reduceItem, removeItem, saveOrder } = useOrder()
 
 	return (
 		<>
@@ -24,7 +24,7 @@ function App() {
 
 			<main className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8 flex flex-col lg:flex-row gap-6">
 				<div className="bg-white flex flex-col gap-6 rounded-xl p-4 md:p-6 lg:p-8 shadow-xl border-0 w-full lg:w-[60%]">
-					<h2 className="text-2xl font-bold mb-5 flex items-center gap-2"><RestaurantMenuRoundedIcon sx={{ fontSize: 25 }} /> Menú</h2>
+					<h2 className="text-2xl font-bold mb-5 flex items-center gap-3"><FastfoodRoundedIcon sx={{ fontSize: 25 }} /> Menú</h2>
 					<div className="flex flex-col gap-3">
 						{menuItems.map(item => (
 							<MenuItem
@@ -35,13 +35,14 @@ function App() {
 						))}
 					</div>
 				</div>
-				<div className="flex flex-col p-5 gap-3 w-full lg:w-[40%]">
-					<div className="border-2 border-neutral-300 p-5 rounded-sm flex flex-col gap-7">
+				<div className="flex flex-col gap-3 w-full lg:w-[40%]">						
 						{order.length > 0 ? (
 							<>
 								<OrderContent 
 									order={order}
 									removeItem={removeItem}
+									addItem={addItem}
+									reduceItem={reduceItem}
 								/>
 								<TipPercentageForm 
 									setTip={setTip}
@@ -55,7 +56,6 @@ function App() {
 							</>
 						) : <p>No hay ninguna orden</p>}
 					</div>
-				</div>
 			</main>
 		</>
 	)
