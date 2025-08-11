@@ -1,7 +1,8 @@
 import { formatCurrency } from "../helpers"
 import { MenuItem, OrderItem } from "../types"
 
-import PaymentsRoundedIcon from '@mui/icons-material/PaymentsRounded'
+import SectionCard from "./SectionCard"
+
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
@@ -16,8 +17,7 @@ type OrderContentProps = {
 const OrderContent = ({ order, removeItem, addItem, reduceItem } : OrderContentProps) => {
     return (
         <>
-			<div className="bg-white flex flex-col gap-6 rounded-xl p-4 md:p-6 lg:p-8 shadow-xl border-0 w-full">
-                <h2 className="text-xl font-bold mb-5 flex items-center gap-3"><PaymentsRoundedIcon sx={{ fontSize: 25 }} />Consumo ({order.length})</h2>
+            <SectionCard title={`Consumo ( ${order.length} artículos )`}>
                 {order.map(item => (
                     <div
                         key={item.id}
@@ -45,7 +45,7 @@ const OrderContent = ({ order, removeItem, addItem, reduceItem } : OrderContentP
                         </div>
                     </div>
                 ))}
-            </div>
+            </SectionCard>
         </>
     )
 }

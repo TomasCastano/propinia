@@ -5,6 +5,7 @@ import MenuItem from "./components/MenuItem"
 import OrderContent from "./components/OrderContent"
 import OrderTotal from "./components/OrderTotal"
 import TipPercentageForm from "./components/TipPercentageForm"
+import EmptyOrder from "./components/EmptyOrder"
 
 import LocalAtmRoundedIcon from '@mui/icons-material/LocalAtmRounded'
 import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded'
@@ -35,7 +36,7 @@ function App() {
 						))}
 					</div>
 				</div>
-				<div className="flex flex-col gap-3 w-full lg:w-[40%]">						
+				<div className="flex flex-col gap-6 w-full lg:w-[40%]">						
 						{order.length > 0 ? (
 							<>
 								<OrderContent 
@@ -45,6 +46,7 @@ function App() {
 									reduceItem={reduceItem}
 								/>
 								<TipPercentageForm 
+									order={order}
 									setTip={setTip}
 									tip={tip}
 								/>
@@ -54,7 +56,7 @@ function App() {
 									saveOrder={saveOrder}
 								/>
 							</>
-						) : <p>No hay ninguna orden</p>}
+						) : <EmptyOrder />}
 					</div>
 			</main>
 		</>

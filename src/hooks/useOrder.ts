@@ -22,7 +22,7 @@ export const useOrder = () => {
 
     const reduceItem = (item: MenuItem) => {
         const itemExist = order.find(orderItem => orderItem.id === item.id)
-        if (itemExist) {
+        if (itemExist && itemExist.quantity > 1) {
             const updatedOrder = order.map( orderItem => orderItem.id === item.id ?
                 { ...orderItem, quantity: orderItem.quantity - 1 } :  orderItem
             )

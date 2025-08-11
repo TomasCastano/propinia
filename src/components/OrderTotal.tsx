@@ -2,6 +2,8 @@ import { useCallback } from "react"
 import { OrderItem } from "../types"
 import { formatCurrency } from "../helpers"
 
+import SectionCard from "./SectionCard"
+
 type OrderTotalProps = {
     order: OrderItem[]
     tip: number
@@ -19,30 +21,27 @@ const OrderTotal = ({ order, tip, saveOrder } : OrderTotalProps) => {
     const totalAmount = useCallback(() => subtotalAmount() + tipAmount(), [tip, order])
 
     return (
-        <>
-        <div className="space-y-3">
-            <h2 className="font-semibold text-2xl">Totales y Propina</h2>
-            <p className="flex gap-1">
+        <SectionCard title="Totales y Propina" className="bg-gradient-to-r from-sky-600 to-sky-700 text-white">
+            <p className="flex items-center justify-between gap-2 border-b border-white/30 pb-2">
                 Subtotal a pagar: 
                 <span className="font-bold">{formatCurrency(subtotalAmount())}</span>
             </p>
-            <p className="flex gap-1">
-                Propina: 
+            <p className="flex items-center justify-between gap-2 border-b border-white/30 pb-2">
+                Propina ({tip * 100}%): 
                 <span className="font-bold">{formatCurrency(tipAmount())}</span>
             </p>
-            <p className="flex gap-1">
+            <p className="flex items-center justify-between gap-2">
                 Total a pagar: 
                 <span className="font-bold">{formatCurrency(totalAmount())}</span>
             </p>
-        </div>
-        <button 
-            className="w-full bg-black p-3 mt-10 text-white font-bold rounded-sm disabled:opacity-15"
-            disabled={totalAmount() === 0}
-            onClick={saveOrder}
-        >
-            Guardar Orden
-        </button>
-        </>
+            <button 
+                className="cursor-pointer w-full bg-white p-3 mt-5 text-sky-900 font-bold rounded-sm disabled:opacity-15"
+                disabled={totalAmount() === 0}
+                onClick={saveOrder}
+            >
+                Guardar Orden
+            </button>
+        </SectionCard>
     )
 }
 
