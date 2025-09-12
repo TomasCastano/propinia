@@ -32,7 +32,7 @@ Esta aplicación es **Propinia**, una calculadora de propinas desarrollada con R
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/TomasCastano/calculadora-de-propinas.git
+   git clone https://github.com/TomasCastano/propinia.git
    ```
 2. Instala las dependencias:
    ```bash
