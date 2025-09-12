@@ -94,4 +94,4 @@ Si tienes ideas para mejorar la calculadora, ¡no dudes en hacer un fork y envia
 
 ---
 
-Hecho por [TomasCastano](https://github.com/TomasCastano)
+Hecho con ❤️ por [Tomas Castano](https://github.com/TomasCastano)
