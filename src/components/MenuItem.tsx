@@ -11,7 +11,7 @@ type MenuItemProps = {
 const MenuItem = ({ item, addItem } : MenuItemProps) => {
     return (
         <div
-            className="flex items-center justify-between text-left w-full border border-neutral-200 bg-white p-5 rounded-sm hover:shadow-md hover:border-sky-300 transition-all duration-200 group"
+            className="flex items-center justify-between text-left w-full shadow-sm bg-neutral-100 p-5 rounded-sm hover:shadow-md hover:border-sky-300 transition-all duration-200 group"
         >
             <h4 className="text-neutral-700 text-lg font-medium group-hover:text-sky-600 transition-all duration-200">{item.name}</h4>
             <div className="flex items-center gap-5">

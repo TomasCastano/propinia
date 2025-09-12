@@ -18,7 +18,7 @@ function App() {
 		<>
 			<header className="bg-gradient-to-r from-sky-500 to-sky-600 text-white py-8 px-4 shadow-lg">
 				<div className="max-w-7xl mx-auto">
-					<h1 className="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3"><LocalAtmRoundedIcon sx={{ fontSize: 40 }} /> Calculadora de Propinas y Consumo</h1>
+					<h1 className="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3"><LocalAtmRoundedIcon sx={{ fontSize: 40 }} /> Propinia</h1>
 					<p className="text-center mt-2 text-sky-100">Selecciona tus productos y calcula la propina perfecta</p>
 				</div>
 			</header>

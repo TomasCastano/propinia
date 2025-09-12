@@ -21,7 +21,7 @@ const OrderContent = ({ order, removeItem, addItem, reduceItem } : OrderContentP
                 {order.map(item => (
                     <div
                         key={item.id}
-                        className="p-5 w-full flex items-center justify-between bg-neutral-100 rounded-sm gap-2.5 border border-neutral-200 last-of-type:border-b"
+                        className="p-5 w-full flex items-center justify-between bg-neutral-100 rounded-sm gap-2.5 shadow-sm last-of-type:border-b"
                     >
                         <div className="flex flex-col items-start gap-4">
                             <h3 className="font-medium">{item.name}</h3>

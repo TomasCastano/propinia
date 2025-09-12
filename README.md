@@ -1,29 +1,32 @@
-# 💰 Calculadora de Propinas y Consumo
+# 💸 Propinia — Calculadora de Propinas y Consumo
 
-Esta aplicación es una **calculadora de propinas** desarrollada con React, TypeScript, TailwindCSS y Vite. Permite a los usuarios calcular fácilmente el monto de propina y el total a pagar en una cuenta, según el porcentaje de propina que deseen dejar.
+Esta aplicación es **Propinia**, una calculadora de propinas desarrollada con React, TypeScript, TailwindCSS y Vite. Permite calcular fácilmente el monto de propina y el total a pagar en una cuenta según el porcentaje elegido. Incluye un sistema de consumo (menú) para agregar, incrementar, reducir y eliminar artículos, e integra iconografía con Material UI.
 
 ## ✨ Características
 
-- **Cálculo de propina**: Ingresa el monto de la cuenta y selecciona (o escribe) el porcentaje de propina. La app calcula automáticamente el valor de la propina y el total a pagar.
-- **División entre personas**: Puedes dividir la cuenta entre varias personas y ver cuánto le corresponde a cada una.
-- **Interfaz amigable**: Diseño intuitivo y responsivo, fácil de usar en dispositivos móviles y de escritorio.
-- **Reset rápido**: Incluye un botón para reiniciar todos los valores y comenzar un nuevo cálculo.
+- **Cálculo de propina**: Selecciona el porcentaje (10%, 20%, 50%) y se calcula propina y total automáticamente.
+- **Gestión de consumo (pedido)**: Agrega artículos del menú, incrementa/reduce cantidades y elimina ítems del pedido.
+- **Totales en tiempo real**: Subtotal, propina y total con formato monetario.
+- **Guardar orden**: Limpia el pedido y restablece el porcentaje de propina para iniciar un nuevo cálculo.
+- **Interfaz amigable y responsive**: UI moderna con TailwindCSS, optimizada para desktop y móvil.
 
 ## 📖 ¿Cómo usar la app?
 
-1. **Selecciona los artículos del menú consumidos** en el campo correspondiente.
-2. **Selecciona o ingresa el porcentaje de propina** que deseas dejar (10%, 20%, 50%).
-3. Automáticamente verás:
-   - El subtotal de la cuenta (valor sin propina)
+1. **Selecciona los artículos del menú** que consumiste y ajusta sus cantidades.
+2. **Elige el porcentaje de propina** (10%, 20% o 50%).
+3. Verás automáticamente:
+   - Subtotal del consumo (sin propina)
    - Valor de la propina
-   - El total a pagar (cuenta + propina)
+   - Total a pagar (consumo + propina)
+4. Opcional: pulsa **Guardar Orden** para limpiar el pedido y comenzar de nuevo.
 
 ## 🛠 Tecnologías utilizadas
 
-- [React](https://es.react.dev/)  
+- [React](https://es.react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)  
-- [TailwindCSS](https://tailwindcss.com/) 
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Material UI Icons](https://mui.com/material-ui/material-icons/) (paquetes `@mui/icons-material` y `@mui/material`)
 
 ## 🚀 Instalación y ejecución local
 
@@ -43,9 +46,47 @@ Esta aplicación es una **calculadora de propinas** desarrollada con React, Type
 
 ## 💡 Optimización y buenas prácticas
 
-- **Custom Hook**: La lógica principal de la calculadora se encuentra encapsulada en un hook personalizado, lo que permite separar la lógica del UI y facilita escalabilidad y testing.
-- **Mejor performance**: El renderizado de componentes está optimizado para evitar renders innecesarios, gracias al uso de técnicas como `React.memo` y la correcta gestión de dependencias.
-- **useCallback**: Se emplea el hook `useCallback` para memorizar funciones y evitar que se generen nuevas instancias en cada render, mejorando la eficiencia de componentes hijos que reciben funciones como props.
+- **Custom Hook (`src/hooks/useOrder.ts`)**: Encapsula la lógica del pedido (agregar, reducir, eliminar, guardar) y el estado de propina.
+- **useCallback**: Memoriza cálculos derivados en `OrderTotal` y `TipPercentageForm` para evitar trabajo innecesario.
+- **Tipado fuerte**: Modelos `MenuItem` y `OrderItem` en `src/types/index.ts`.
+- **Componentización**: UI dividida en componentes (`MenuItem`, `OrderContent`, `TipPercentageForm`, `OrderTotal`, `SectionCard`).
+
+## 📂 Estructura del proyecto
+
+```text
+src/
+  App.tsx
+  main.tsx
+  components/
+    EmptyOrder.tsx
+    MenuItem.tsx
+    OrderContent.tsx
+    OrderTotal.tsx
+    TipPercentageForm.tsx
+    SectionCard.tsx
+  data/
+    db.ts                # Lista de artículos del menú
+  helpers/
+    index.ts            # Utilidades (p. ej. formato de moneda)
+  hooks/
+    useOrder.ts         # Lógica de pedido y propina
+  types/
+    index.ts            # Tipos TS para MenuItem y OrderItem
+```
+
+## ⚙️ Configuración y personalización
+
+- **Moneda/Formato**: Cambia el formateo en `src/helpers/index.ts` (por defecto `en-US` y `USD`).
+- **Artículos del menú**: Edita `src/data/db.ts` para añadir/quitar productos o modificar precios.
+- **Porcentajes de propina**: Ajusta el arreglo `tipOptions` en `src/components/TipPercentageForm.tsx`.
+- **Estilos**: La UI usa TailwindCSS; puedes extender clases utilitarias o crear componentes de estilo.
+
+## 🧪 Scripts disponibles
+
+- `npm run dev`: Inicia el entorno de desarrollo con Vite.
+- `npm run build`: Compila TypeScript y genera el build de producción.
+- `npm run preview`: Sirve el build de producción localmente.
+- `npm run lint`: Ejecuta ESLint sobre el proyecto.
 
 ## Contribución
 

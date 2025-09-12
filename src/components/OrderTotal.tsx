@@ -35,7 +35,7 @@ const OrderTotal = ({ order, tip, saveOrder } : OrderTotalProps) => {
                 <span className="font-bold">{formatCurrency(totalAmount())}</span>
             </p>
             <button 
-                className="cursor-pointer w-full bg-white p-3 mt-5 text-sky-900 font-bold rounded-sm disabled:opacity-15"
+                className="cursor-pointer w-full bg-white p-3 mt-5 text-sky-900 font-bold rounded-sm disabled:opacity-15 hover:bg-neutral-200 transition-colors"
                 disabled={totalAmount() === 0}
                 onClick={saveOrder}
             >

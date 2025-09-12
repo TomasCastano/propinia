@@ -46,7 +46,7 @@ const TipPercentageForm = ({ order, setTip, tip } : TipPercentageFormProps) => {
                             onChange={e => setTip(+e.target.value)}
                             checked={tipOption.value === tip}
                         />
-                        <label htmlFor={tipOption.id} className="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 flex-1 cursor-pointer p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors">
+                        <label htmlFor={tipOption.id} className="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 flex-1 cursor-pointer p-3 rounded-lg border border-gray-200 hover:bg-neutral-100 transition-colors">
                             <div className="flex items-center justify-between gap-2 w-full">
                                 <div className="flex flex-col gap-1.5">
                                     <span className="font-semibold">{tipOption.label}</span>
